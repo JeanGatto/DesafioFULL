@@ -9,7 +9,7 @@ namespace Desafio.Aplicacao.Interfaces
     public interface IDividaServico : IDisposable
     {
         Task<ApiResultado<DividaResposta>> CriarAsync(DividaRequisicao requisicao);
-        Task<IEnumerable<DividaResposta>> ListarAsync();
+        Task<IEnumerable<DividaGridResposta>> ListarAsync();
         Task<ApiResultado<DividaResposta>> ObterPorIdAsync(int id);
         Task<ApiResultado<DividaResposta>> ObterPorNumeroAsync(ObterDividaPorNumeroRequisicao requisicao);
     }

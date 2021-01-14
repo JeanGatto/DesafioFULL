@@ -10,6 +10,11 @@ namespace Desafio.Aplicacao.Mapeador
         {
             CreateMap<Devedor, DevedorResposta>(MemberList.Destination);
             CreateMap<Divida, DividaResposta>(MemberList.Destination);
+
+            CreateMap<Divida, DividaGridResposta>(MemberList.Destination)
+                .ForMember(dest => dest.NomeCompleto, opt => opt.MapFrom(src => src.Devedor.NomeCompleto))
+                .ForMember(dest => dest.CPF, opt => opt.MapFrom(src => src.Devedor.CPF));
+
             CreateMap<Parcela, ParcelaResposta>(MemberList.Destination);
         }
     }

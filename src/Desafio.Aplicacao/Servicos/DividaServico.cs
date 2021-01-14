@@ -57,10 +57,10 @@ namespace Desafio.Aplicacao.Servicos
             return resultado.Sucesso("Cadastrado com sucesso.", resposta);
         }
 
-        public async Task<IEnumerable<DividaResposta>> ListarAsync()
+        public async Task<IEnumerable<DividaGridResposta>> ListarAsync()
         {
             var dividas = await _repositorio.ListarAsync();
-            return _mapeador.Map<IEnumerable<DividaResposta>>(dividas);
+            return _mapeador.Map<IEnumerable<DividaGridResposta>>(dividas);
         }
 
         public async Task<ApiResultado<DividaResposta>> ObterPorIdAsync(int id)

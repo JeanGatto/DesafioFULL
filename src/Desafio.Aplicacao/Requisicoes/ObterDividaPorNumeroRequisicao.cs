@@ -15,7 +15,7 @@ namespace Desafio.Aplicacao.Requisicoes
         public override void Validar()
         {
             var validador = new InlineValidator<ObterDividaPorNumeroRequisicao>();
-            validador.RuleFor(x => x.Numero).NotEmpty();
+            validador.RuleFor(x => x.Numero).NotEmpty().MaximumLength(10);
             AdicionarNotificacoes(validador.Validate(this));
         }
     }

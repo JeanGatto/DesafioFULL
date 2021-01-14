@@ -55,7 +55,7 @@ namespace Desafio.ApiPublica.Controllers
         }
 
         // GET: api/dividas/{numero}/numero
-        [HttpGet("{numero}")]
+        [HttpGet("{numero}/numero")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(DividaResposta), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResultado<DividaResposta>), StatusCodes.Status404NotFound)]
