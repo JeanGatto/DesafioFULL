@@ -4,4 +4,17 @@
 		<TargetFramework>netcoreapp3.1</TargetFramework>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.10" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Desafio.Aplicacao\Desafio.Aplicacao.csproj" />
+		<ProjectReference Include="..\Desafio.Compartilhado\Desafio.Compartilhado.csproj" />
+		<ProjectReference Include="..\Desafio.Dominio\Desafio.Dominio.csproj" />
+		<ProjectReference Include="..\Desafio.Infraestrutura\Desafio.Infraestrutura.csproj" />
+	</ItemGroup>
+
 </Project>

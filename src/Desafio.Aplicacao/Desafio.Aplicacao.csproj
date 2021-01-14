@@ -4,4 +4,17 @@
 		<TargetFramework>netcoreapp3.1</TargetFramework>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
+		<PackageReference Include="Extensions.FluentValidation.Br" Version="1.0.1" />
+		<PackageReference Include="FluentValidation" Version="9.4.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Desafio.Compartilhado\Desafio.Compartilhado.csproj" />
+		<ProjectReference Include="..\Desafio.Dominio\Desafio.Dominio.csproj" />
+		<ProjectReference Include="..\Desafio.Infraestrutura\Desafio.Infraestrutura.csproj" />
+	</ItemGroup>
+
 </Project>
