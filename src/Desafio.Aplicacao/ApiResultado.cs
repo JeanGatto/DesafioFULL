@@ -25,7 +25,7 @@ namespace Desafio.Aplicacao
         [JsonProperty(Order = 2)]
         public IEnumerable<Notificacao> Erros { get; private set; }
 
-        [JsonProperty(Order = 3, Required = Required.AllowNull, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(Order = 3, NullValueHandling = NullValueHandling.Ignore)]
         public T Dados { get; private set; }
 
         public ApiResultado<T> Falha(string mensagem)

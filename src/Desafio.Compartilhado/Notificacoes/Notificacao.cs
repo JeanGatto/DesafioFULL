@@ -1,12 +1,7 @@
 namespace Desafio.Compartilhado.Notificacoes
 {
-    public class Notificacao
+    public sealed class Notificacao
     {
-        public Notificacao(string mensagem)
-        {
-            Mensagem = mensagem;
-        }
-
         public Notificacao(string propriedade, string mensagem)
         {
             Propriedade = propriedade;
@@ -15,5 +10,10 @@ namespace Desafio.Compartilhado.Notificacoes
 
         public string Propriedade { get; }
         public string Mensagem { get; }
+
+        public override string ToString()
+        {
+            return $"{Propriedade}: {Mensagem}";
+        }
     }
 }

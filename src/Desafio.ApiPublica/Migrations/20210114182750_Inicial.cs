@@ -17,10 +17,7 @@ namespace Desafio.ApiPublica.Migrations
                     CPF = table.Column<string>(type: "VARCHAR(11)", maxLength: 11, nullable: false),
                     CadastradoEm = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Devedor", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_Devedor", x => x.Id));
 
             migrationBuilder.CreateTable(
                 name: "Divida",

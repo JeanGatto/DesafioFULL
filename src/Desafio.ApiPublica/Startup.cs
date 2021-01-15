@@ -15,7 +15,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using System.Net.Mime;
 
@@ -23,6 +22,13 @@ namespace Desafio.ApiPublica
 {
     public class Startup
     {
+        private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings
+        {
+            Formatting = Formatting.None,
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            ContractResolver = new CamelCasePropertyNamesContractResolver()
+        };
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -68,10 +74,9 @@ namespace Desafio.ApiPublica
                 })
                 .AddNewtonsoftJson(jsonOptions =>
                 {
-                    jsonOptions.SerializerSettings.Formatting = Formatting.None;
-                    jsonOptions.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                    jsonOptions.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                    jsonOptions.SerializerSettings.Converters.Add(new StringEnumConverter(new CamelCaseNamingStrategy()));
+                    jsonOptions.SerializerSettings.Formatting = SerializerSettings.Formatting;
+                    jsonOptions.SerializerSettings.ReferenceLoopHandling = SerializerSettings.ReferenceLoopHandling;
+                    jsonOptions.SerializerSettings.ContractResolver = SerializerSettings.ContractResolver;
                 });
         }
 
@@ -100,9 +105,10 @@ namespace Desafio.ApiPublica
                         var logger = loggerFactory.CreateLogger<Startup>();
                         logger.LogError(exceptionHandler.Error, exceptionHandler.Error.Message);
 
-                        var jsonText = JsonConvert.SerializeObject(new ApiResultado<ExececaoAplicacao>()
-                            .Falha("Ocorreu um erro interno ao processar a sua solicitação."));
+                        var resultado = new ApiResultado<ExececaoAplicacao>()
+                            .Falha("Ocorreu um erro interno ao processar a sua solicitação.");
 
+                        var jsonText = JsonConvert.SerializeObject(resultado, SerializerSettings);
                         await context.Response.WriteAsync(jsonText);
                     }
                 });

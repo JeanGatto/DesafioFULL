@@ -1,0 +1,77 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+@{
+    if (Model.IsSuccessful)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <span>Cadastrado com sucesso!</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+}
+<div class="col-xl">
+    <div class="row">
+        <div class="col-10">
+            <h1>Títulos</h1>
+            <p>Inclua e visualize os títulos e suas parcelas.</p>
+        </div>
+        <div class="col-2">
+            <a asp-page="./Add" class="btn btn-primary">Adicionar</a>
+        </div>
+    </div>
+    <table id="tbListagem" class="table table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" class="text-center" width="10%">Ações</th>
+                <th scope="col" class="text-left" width="15%">Número do título</th>
+                <th scope="col" class="text-center" width="12%">% de juros</th>
+                <th scope="col" class="text-center" width="12%">% de multa</th>
+                <th scope="col" class="text-left" width="36%">Nome do devedor</th>
+                <th scope="col" class="text-center" width="15%">CPF do devedor</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.Grid != null)
+                {
+                    foreach (var item in Model.Grid)
+                    {
+                        <tr>
+                            <td scope="col" class="text-center" width="10%">
+                                <a asp-page="./Details" asp-route-id="@item.Id">detalhes</a>
+                            </td>
+                            <td scope="col" class="text-left" width="15%">
+                                @item.Numero
+                            </td>
+                            <td scope="col" class="text-center" width="12%">
+                                @item.Multa%
+                            </td>
+                            <td scope="col" class="text-center" width="12%">
+                                @item.JurosAoMes% ao mês
+                            </td>
+                            <td scope="col" class="text-left" width="36%">
+                                @item.NomeCompleto
+                            </td>
+                            <td scope="col" class="text-center" width="15%">
+                                <span class="cpf">
+                                    @item.CPF
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td scope="col" class="text-center" colspan="6" width="100%">Nenhum registro na base de dados.</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

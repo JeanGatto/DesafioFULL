@@ -1,0 +1,136 @@
+@page
+@model Desafio.Web.Pages.DetailsModel
+@{
+    ViewData["Title"] = "Detalhes";
+}
+<div class="col-xl">
+    <table class="table table-bordered table-sm">
+        <tbody>
+            <tr>
+                <td scope="col" class="text-left table-dark" colspan="2" width="100%">
+                    <b>Informações do Título</b>
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="text-left" width="20%">
+                    <b>Cadastro Em</b>
+                </td>
+                <td scope="col" class="text-left" width="80%">
+                    @Model.Divida.CadastradoEm.ToString("dd/MM/yyyy HH:mm")
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="text-left" width="20%">
+                    <b>Número do título</b>
+                </td>
+                <td scope="col" class="text-left" width="80%">
+                    @Model.Divida.Numero
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="text-left" width="20%">
+                    <b>Nome do devedor</b>
+                </td>
+                <td scope="col" class="text-left" width="80%">
+                    @Model.Divida.Devedor.NomeCompleto
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="text-left" width="20%">
+                    <b>CPF do devedor</b>
+                </td>
+                <td scope="col" class="text-left" width="80%">
+                    <span class="cpf">
+                        @Model.Divida.Devedor.CPF
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="text-left" width="20%">
+                    <b>% de multa</b>
+                </td>
+                <td scope="col" class="text-left" width="80%">
+                    @Model.Divida.Multa%
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="text-left" width="20%">
+                    <b>% de juros</b>
+                </td>
+                <td scope="col" class="text-left" width="80%">
+                    @Model.Divida.JurosAoMes% ao mês
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="text-left" width="20%">
+                    <b>Quantidade de parcelas</b>
+                </td>
+                <td scope="col" class="text-left" width="80%">
+                    @Model.Divida.QuantidadeParcelas
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="text-left" width="20%">
+                    <b>Valor original</b>
+                </td>
+                <td scope="col" class="text-left" width="80%">
+                    @Model.Divida.ValorOriginal.ToString("c")
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="text-left" width="20%">
+                    <b>Dias em atraso</b>
+                </td>
+                <td scope="col" class="text-left" width="80%">
+                    @Model.Divida.DiasEmAtraso dia(s) em atraso
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="text-left" width="20%">
+                    <b>Valor atualizado</b>
+                </td>
+                <td scope="col" class="text-left" width="80%">
+                    <b class="text-danger">@Model.Divida.ValorAtualizadoDataHoje.ToString("c")</b> (na data de hoje @DateTime.Now.ToString("d"))
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-bordered table-sm">
+        <thead>
+            <tr>
+                <th scope="col" colspan="3" class="text-center table-dark" width="100%">
+                    <b>Parcelas</b>
+                </th>
+            </tr>
+            <tr>
+                <th scope="col" class="text-center" width="33%">
+                    Parcela número
+                </th>
+                <th scope="col" class="text-center" width="33%">
+                    Data vencimento
+                </th>
+                <th scope="col" class="text-center" width="33%">
+                    Valor
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var parcela in Model.Divida.Parcelas)
+                {
+                    <tr>
+                        <td scope="col" class="text-center" width="33%">
+                            @parcela.Numero
+                        </td>
+                        <td scope="col" class="text-center" width="33%">
+                            @parcela.DataVencimento.ToString("d")
+                        </td>
+                        <td scope="col" class="text-center" width="33%">
+                            @parcela.Valor.ToString("c")
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

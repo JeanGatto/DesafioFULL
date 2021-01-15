@@ -17,7 +17,7 @@ namespace Desafio.Compartilhado.Notificacoes
 
         public void AdicionarNotificacao(string mensagem)
         {
-            _notificacoes.Add(new Notificacao(mensagem));
+            _notificacoes.Add(new Notificacao(string.Empty, mensagem));
         }
 
         public void AdicionarNotificacao(string propriedade, string mensagem)
@@ -45,6 +45,9 @@ namespace Desafio.Compartilhado.Notificacoes
             _notificacoes.AddRange(notificacoes);
         }
 
-        public void Limpar() => _notificacoes.Clear();
+        public void Limpar()
+        {
+            _notificacoes.Clear();
+        }
     }
 }

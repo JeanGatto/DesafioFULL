@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Dominio", "4 - Dominio"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infraestrutura", "5 - Infraestrutura", "{B2FF7859-8F7E-4DC4-AB4E-C25FA9BC3517}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio.Web", "src\Desafio.Web\Desafio.Web.csproj", "{DD9E0FFA-C522-487A-BEE2-5467894FE234}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{B82E1FBB-EAA3-43D7-B04C-2B4A83A96E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B82E1FBB-EAA3-43D7-B04C-2B4A83A96E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B82E1FBB-EAA3-43D7-B04C-2B4A83A96E8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD9E0FFA-C522-487A-BEE2-5467894FE234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD9E0FFA-C522-487A-BEE2-5467894FE234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD9E0FFA-C522-487A-BEE2-5467894FE234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD9E0FFA-C522-487A-BEE2-5467894FE234}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +86,7 @@ Global
 		{E8CC2107-89F9-4A86-A1B7-E06B447D478B} = {A1572636-71C0-49B2-8796-D263D31C5956}
 		{F1A9AA3B-E9E4-454F-A8C3-2855DF7DAEB7} = {A1572636-71C0-49B2-8796-D263D31C5956}
 		{B2FF7859-8F7E-4DC4-AB4E-C25FA9BC3517} = {A1572636-71C0-49B2-8796-D263D31C5956}
+		{DD9E0FFA-C522-487A-BEE2-5467894FE234} = {F081A400-0A09-499B-9720-A6188C880218}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0602F7A-6DF3-432A-AB89-31555C332F51}

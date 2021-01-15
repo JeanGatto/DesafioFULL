@@ -1,0 +1,72 @@
+@page
+@model Desafio.Web.Pages.AddModel
+@{
+    ViewData["Title"] = "Adicionar Título";
+}
+@{
+    if (Model.Errors != null && Model.Errors.Any())
+    {
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Atenção, corrija os erros:</h4>
+            <ul>
+                @foreach (var errorMessage in Model.Errors)
+                {
+                    <li>@errorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+}
+<form id="formAdd" method="post" class="needs-validation">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Divida.Numero"></label>
+            <input type="text" class="form-control" asp-for="Divida.Numero" placeholder="Número do título..." maxlength="10" />
+            <div class="invalid-feedback" style="display:inline">
+                <span asp-validation-for="Divida.Numero" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="Divida.Multa"></label>
+            <input type="text" class="form-control porcentagem" asp-for="Divida.Multa" />
+            <div class="invalid-feedback" style="display:inline">
+                <span asp-validation-for="Divida.Multa" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="Divida.JurosAoMes"></label>
+            <input type="text" class="form-control porcentagem" asp-for="Divida.JurosAoMes" />
+            <div class="invalid-feedback" style="display:inline">
+                <span asp-validation-for="Divida.JurosAoMes" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Divida.NomeCompleto"></label>
+            <input type="text" class="form-control" asp-for="Divida.NomeCompleto" placeholder="O nome completo..." maxlength="100" />
+            <div class="invalid-feedback" style="display:inline">
+                <span asp-validation-for="Divida.NomeCompleto" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Divida.CPF"></label>
+            <input type="text" class="form-control cpf" asp-for="Divida.CPF" />
+            <div class="invalid-feedback" style="display:inline">
+                <span asp-validation-for="Divida.CPF" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <button id="btnAddNew" type="button" class="btn btn-secondary">Adicionar Parcela</button>
+        </div>
+    </div>
+    <div id="boxParcelas"></div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </div>
+</form>
